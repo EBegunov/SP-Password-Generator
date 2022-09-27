@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
+
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
 import PassStrength from "../../Components/UI/PassStrength/PassStrength";
 import Slider from "../../Components/UI/Slider/Slider";
+
 import "./PasswordGenerator.css";
 
 const PasswordGenerator = () => {
@@ -11,6 +16,7 @@ const PasswordGenerator = () => {
   const [validLower, setValidLower] = useState(false);
   const [validNumbers, setValidNumbers] = useState(false);
   const [validSymbol, setValidSymbol] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -119,7 +125,13 @@ const PasswordGenerator = () => {
     <div className="wrapper">
       <div className="output__box">
         {newPass}
-        <IoCopyOutline className="output__img" />
+        <CopyToClipboard text={newPass} onCopy={() => setCopied(!copied)}>
+          {!!copied ? (
+            <IoCheckmarkDoneSharp className="output__img" />
+          ) : (
+            <IoCopyOutline className="output__img" />
+          )}
+        </CopyToClipboard>
       </div>
 
       <div className="input__box">
