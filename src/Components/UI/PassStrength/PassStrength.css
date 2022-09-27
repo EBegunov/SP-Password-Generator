@@ -1,0 +1,17 @@
+.passStrength__value {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.passStrength__value-img {
+  width: 1rem;
+  height: 2rem;
+  border: 3px solid #fff;
+  background-color: #c2464a;
+}
+
+.passStrength__value-img.action {
+  background-color: #10d126;
+  border: 3px solid #fff;
+}
